@@ -1,0 +1,340 @@
+/* Drawing extension styles */
+
+.drawing-extension-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 16px;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 9999998;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.drawing-extension-button span {
+  display: flex;
+  align-items: center;
+}
+
+.drawing-extension-button span::before {
+  content: "✍️";
+  /* margin-right: 6px; */
+}
+
+.drawing-extension-button:hover {
+  background-color: #3367d6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* Extension container */
+.drawing-extension-container {
+  font-family: Arial, sans-serif;
+}
+
+/* Drawing box */
+#drawing-box {
+  background: #ffffff;
+  position: fixed;
+  right: 20px;
+  bottom: -50px;
+  padding: 1rem;
+  display: flex;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.15);
+  z-index: 9999999;
+  transition: opacity 0.2s ease;
+  transform: scale(0.5);
+  border-radius: 8px;
+  cursor: move; /* Indicate it's draggable */
+  user-select: none; /* Prevent text selection during drag */
+  align-items: center;
+  border: 1px solid #f0f0f0;
+  touch-action: none; /* Prevent scrolling when dragging on touch devices */
+  box-sizing: border-box !important; /* Ensure padding is included in width/height calculations */
+}
+
+/* Prevent drawing while dragging */
+body[data-dragging="true"] #drawing-layer {
+  pointer-events: none !important;
+}
+
+/* Style for when dragging */
+#drawing-box.is-dragging {
+  opacity: 0.9;
+  pointer-events: none; /* Prevent any interactions when dragging */
+}
+
+#drawing-box:before {
+  content: "";
+  width: 20px;
+  height: 10px;
+  background: rgba(0,0,0,0.05);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 0 0 10px 10px;
+  cursor: move;
+}
+
+[data-drawing="true"] #drawing-box {
+  bottom: 3rem;
+  transform: scale(1);
+}
+
+#drawing-cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-out;
+  width: 100%;
+  height: 100%;
+  z-index: 9999997;
+}
+
+[data-drawing="true"] #drawing-cover {
+  background: rgba(0,0,0,0.25);
+  pointer-events: all;
+}
+
+#drawing-box .tools svg, #drawing-box .close svg {
+  color: #333;
+  padding: 0;
+  font-size: 1.25rem;
+}
+
+#drawing-box .close, 
+#drawing-box .clear, 
+#drawing-box .highlight-actions {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #555;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  height: 30px;
+  width: 30px;
+  justify-content: center;
+  margin: 0 5px;
+}
+
+#drawing-box .close:hover, 
+#drawing-box .clear:hover, 
+#drawing-box .highlight-actions:hover {
+  color: #4285f4;
+}
+
+#drawing-box .close:hover {
+  color: #f44336;
+}
+
+#drawing-box .tools {
+  display: flex;
+  border-right: 1px solid #e8e8e8;
+  margin-right: 10px;
+  padding-right: 10px;
+  height: 30px;
+  align-items: center;
+}
+
+#drawing-box .tools > button {
+  min-width: 65px;
+  margin: 0 5px;
+  padding: 5px 10px;
+  background: transparent;
+  box-shadow: none;
+  height: 32px;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#drawing-box .tools > button:first-child {
+  margin-left: 0;
+}
+
+#drawing-box .tools > button:last-child {
+  margin-right: 0;
+}
+
+#drawing-box .tools > button:hover {
+  background-color: #f5f5f5;
+}
+
+#drawing-box .tools > button span {
+  background: transparent;
+  filter: none !important;
+  padding: 0;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  color: #555;
+}
+
+#drawing-box .colors {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  margin: 0 10px;
+  border-right: 1px solid #e8e8e8;
+  padding-right: 10px;
+}
+
+#drawing-box .colors > div {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  margin: 0 5px;
+  transform: scale(1);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+  position: relative;
+}
+
+#drawing-box .colors > div:first-child {
+  margin-left: 0;
+}
+
+#drawing-box .colors > div:last-child {
+  margin-right: 0;
+}
+
+#drawing-box .colors > div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#drawing-box .colors > div[data-current="true"] {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+#drawing-box .colors > div[data-current="true"]:after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  border-radius: 6px;
+  border: 2px solid #4285f4;
+  box-sizing: border-box;
+}
+
+#drawing-box [data-tool][data-current="true"] {
+  background-color: #f0f7ff;
+}
+
+#drawing-box [data-tool][data-current="true"] span {
+  color: #4285f4;
+  font-weight: 600;
+}
+
+#drawing-box [data-tool]:not([data-current="true"]):hover span {
+  color: #333;
+}
+
+#drawing-layer svg {
+  display: block !important;
+  fill: transparent;
+  clip-path: inset(-9999px -9999px -99999px -99999px);
+  overflow: visible;
+  z-index: 999999999;
+}
+
+#drawing-layer {
+  overflow: visible;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+
+[data-drawing="true"] #drawing-layer {
+  pointer-events: all;
+}
+
+#drawing-layer .free-hand, #drawing-layer .arrow {
+  overflow: visible;
+  position: absolute;
+}
+
+#drawing-layer .free-hand.static, #drawing-layer .arrow.static {
+  opacity: 0;
+}
+
+#drawing-layer svg path {
+  stroke-linecap: round;
+}
+
+#drawing-layer svg path, #drawing-layer svg line {
+  cursor: pointer;
+  pointer-events: visiblepainted;
+  position: absolute;
+}
+
+#drawing-box .colors [data-color="black"] { background: #544141; }
+#drawing-box .colors [data-color="red"] { background: #d83030; }
+#drawing-box .colors [data-color="green"] { background: #30d97d; }
+#drawing-box .colors [data-color="orange"] { background: #ff9000; }
+#drawing-box .colors [data-color="yellow"] { background: #f3f326; }
+#drawing-box .colors [data-color="white"] { background: #ffffff; }
+
+/* View highlights button */
+.view-highlights {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+  body[data-drawing="true"] {
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+  }
+  
+  #drawing-box .colors [data-color="green"], 
+  #drawing-box .colors [data-color="orange"],
+  #drawing-box .colors [data-color="yellow"],
+  #drawing-box .colors [data-color="white"] {
+      display: none;
+  }
+}
+
+.arrow-point {
+  position: absolute;
+  background-color: currentColor;
+  width: 10px;
+  height: 10px;
+}
+
+/* Highlighted text */
+.highlighted {
+  background-color: inherit;
+  cursor: pointer;
+}

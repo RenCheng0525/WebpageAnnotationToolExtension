@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Webpage Annotation Tool</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 300px;
+      font-family: Arial, sans-serif;
+      padding: 15px;
+    }
+    
+    h1 {
+      font-size: 18px;
+      margin-top: 0;
+      color: #333;
+      text-align: center;
+    }
+    
+    .button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 15px;
+      transition: background-color 0.3s;
+    }
+    
+    .button:hover {
+      background-color: #3367d6;
+    }
+    
+    .instructions {
+      margin-top: 15px;
+      font-size: 13px;
+      color: #666;
+      line-height: 1.4;
+    }
+    
+    .tools-list {
+      margin-top: 10px;
+      padding-left: 20px;
+      font-size: 13px;
+      color: #555;
+    }
+    
+    .language-toggle {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+    }
+    
+    .language-btn {
+      background-color: #f1f1f1;
+      color: #333;
+      border: 1px solid #ddd;
+      padding: 5px 10px;
+      margin: 0 5px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 12px;
+      transition: all 0.3s;
+    }
+    
+    .language-btn.active {
+      background-color: #4285f4;
+      color: white;
+      border-color: #3367d6;
+    }
+  </style>
+</head>
+<body>
+  <div class="language-toggle">
+    <button id="en-lang" class="language-btn active">English</button>
+    <button id="zh-lang" class="language-btn">中文</button>
+  </div>
+  
+  <h1 data-en="Webpage Annotation Tool" data-zh="網頁標註工具">Webpage Annotation Tool</h1>
+  
+  <p class="instructions" data-en="This extension allows you to draw and highlight on any webpage." data-zh="這個擴展允許您在任何網頁上繪畫和標註文字。">
+    This extension allows you to draw and highlight on any webpage.
+  </p>
+  
+  <div class="tools-list">
+    <strong data-en="Available tools:" data-zh="可用工具：">Available tools:</strong>
+    <ul>
+      <li data-en="Pen tool for free-hand drawing" data-zh="筆工具用於自由繪畫">Pen tool for free-hand drawing</li>
+      <li data-en="Arrow tool for directional pointers" data-zh="箭頭工具用於方向指示">Arrow tool for directional pointers</li>
+      <li data-en="Highlight tool for text highlighting" data-zh="標註工具用於文字標註">Highlight tool for text highlighting</li>
+      <li data-en="Eraser tool to remove elements" data-zh="橡皮擦工具用於移除元素">Eraser tool to remove elements</li>
+      <li data-en="Multiple colors to choose from" data-zh="多種顏色可供選擇">Multiple colors to choose from</li>
+    </ul>
+  </div>
+  
+  <button id="activate-drawing" class="button" data-en="Activate Tools" data-zh="啟用工具">Activate Tools</button>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
